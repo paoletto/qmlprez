@@ -60,6 +60,7 @@ Slide {
 
     property alias paletteName: paletteLoader.name
     property alias palette: paletteLoader.palette
+    property alias code: editor.text
 
     Item {
         id: incubationItem

@@ -5,5 +5,6 @@
         <file>BackgroundSwirls.qml</file>
         <file>particle.png</file>
         <file>Swirl.qml</file>
+        <file>main.qml</file>
     </qresource>
 </RCC>

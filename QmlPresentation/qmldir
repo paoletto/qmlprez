@@ -1,8 +1,14 @@
 module QmlPresentation
+plugin qmlpresentationplugin ../bin/imports/
 QmlPresentationTools    1.0 QmlPresentationTools.js
 CodeSlide               1.0 CodeSlide.qml
+LiveCodeSlide           1.0 LiveCodeSlide.qml
 Presentation            1.0 Presentation.qml
 Slide                   1.0 Slide.qml
 SlideCounter            1.0 SlideCounter.qml
 Clock                   1.0 Clock.qml
-
+PaletteLoader           1.0 palettes/PaletteLoader.qml
+BasePalette             1.0 palettes/BasePalette.qml
+CutePalette             1.0 palettes/CutePalette.qml
+DarkPalette             1.0 palettes/DarkPalette.qml
+LightPalette            1.0 palettes/LightPalette.qml

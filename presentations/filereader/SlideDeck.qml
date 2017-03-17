@@ -39,34 +39,8 @@
 **
 ****************************************************************************/
 
-// Some inline comment
-
 import QtQuick 2.7
-import QtQuick.Window 2.2
 import QmlPresentation 1.0
-
-Window {
-    id: win
-    visible: true
-    width: 1280
-    height: 960
-    property var oldVisibility
-
-    Component.onCompleted: {
-        oldVisibility = visibility;
-    }
-
-    Shortcut {
-        sequence: "Ctrl+F11"
-        onActivated: {
-            if (win.visibility == Window.FullScreen) {
-                win.visibility = win.oldVisibility
-            } else {
-                win.oldVisibility = win.visibility
-                win.visibility = Window.FullScreen
-            }
-        }
-    }
 
 Presentation {
     anchors.fill: parent
@@ -83,18 +57,9 @@ Presentation {
 
     Clock { textColor: "white" }
     SlideCounter { textColor: "white" }
-    // property var bloooooo
-    property var someUrl : "http://foobar.ba.uk"
     titleColor: "white"
 
-    showNotes: true
-
-    Slide {
-        id: firstSlide;
-        centeredText: "Using Notes..."
-        fontScale: 2
-        notes: "In this window you will see the notes for the very first slide..."
-    }
+    //showNotes: true
 
     CodeSlide {
         title: "Enable using Presentation.showNotes"
@@ -103,32 +68,11 @@ Presentation {
 It is as simple as setting 'showNotes: true' in the Presentation {} element and then add a text to the 'notes' property of the Slide.
 
 The text will then update automatically as you go from slide to slide."
-        code: QmlPresentationTools.getSource(
-                  'file:///media/paolo/qdata/home/paolo/Qt/Location/z_talks/qmlprez/presentations/filereader/SlideDeck.qml', true)
+        code: QmlPresentationTools.getSource('../presentations/filereader/SlideDeck.qml', true)
     }
 
-    Slide {
-        title: "Example Slide"
-        content: [
-            "There should be a second window on your desktop",
-            "It should read 'once upon a time'",
-            "",
-            "Try changing the slide..."
-        ]
-        notes: "once upon a time..."
+    LiveCodeSlide {
+        //title: "LiveCode test"
     }
 
-    Slide {
-        title: "Second Example Slide"
-        content: [
-            "The text on the second window should now change",
-            "The notes window shows plain text with plain line brakes only"
-        ]
-        notes:
-"This is the second example slide...
-
-This notes system uses the QtQuick.Window element to pop up a second window. Quite simple and quite convenient..."
-    }
-
-}
 }

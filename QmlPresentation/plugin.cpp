@@ -38,21 +38,26 @@
 **
 ****************************************************************************/
 
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QDebug>
-#include "qmlpresentation.h"
+#include <QtQml/qqmlextensionplugin.h>
+#include "SyntaxHighlighter.h"
 
-int main(int argc, char *argv[])
+QT_BEGIN_NAMESPACE
+
+class QQmlPresentationPlugin : public QQmlExtensionPlugin
 {
-    QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication app(argc, argv);
+    Q_OBJECT
+    Q_PLUGIN_METADATA(IID QQmlExtensionInterface_iid)
 
-    QQmlApplicationEngine engine;
-    registerQmlPresentation(engine);
-    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
+public:
+    void registerTypes(const char *uri)
+    {
+        Q_ASSERT(uri == QLatin1String("QmlPresentation"));
+        Q_UNUSED(uri);
+        qDebug() << "registering stuff for " << uri;
+        qmlRegisterType<SyntaxHighlighter>(uri, 1, 0, "SyntaxHighlighter");
+    }
+};
 
-    return app.exec();
-}
+QT_END_NAMESPACE
 
-
+#include "plugin.moc"

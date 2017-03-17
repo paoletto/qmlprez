@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     registerQmlPresentation(engine);
-    engine.load(QUrl(QStringLiteral("qrc:/SlideDeck.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
 
     return app.exec();
 }

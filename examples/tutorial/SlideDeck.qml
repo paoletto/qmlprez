@@ -39,41 +39,15 @@
 **
 ****************************************************************************/
 
-
 import QtQuick 2.7
-import QtQuick.Window 2.2
 import QmlPresentation 1.0
-
-Window {
-    id: win
-    visible: true
-    width: 640
-    height: 640
-    property var oldVisibility
-
-    Component.onCompleted: {
-        oldVisibility = visibility;
-    }
-
-    Shortcut {
-        sequence: "Ctrl+F11"
-        onActivated: {
-            if (win.visibility == Window.FullScreen) {
-                win.visibility = win.oldVisibility
-            } else {
-                win.oldVisibility = win.visibility
-                win.visibility = Window.FullScreen
-            }
-        }
-    }
 
 Presentation
 {
     id: presentation
     //anchors.centerIn: parent
     anchors.fill: parent
-    showNotes: true
-
+    //showNotes: true
 
 //    width: 1280
 //    height: 720
@@ -360,4 +334,3 @@ int main(int argc, char **argv) {
 
 
 } // Presentation
-} // Window

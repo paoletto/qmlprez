@@ -3,5 +3,6 @@
         <file>SlideDeck.qml</file>
         <file>SlideDeckRotated.qml</file>
         <file>CodeSection.qml</file>
+        <file>main.qml</file>
     </qresource>
 </RCC>

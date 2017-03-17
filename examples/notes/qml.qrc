@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>SlideDeck.qml</file>
+        <file>main.qml</file>
     </qresource>
 </RCC>

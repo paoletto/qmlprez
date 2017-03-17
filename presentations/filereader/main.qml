@@ -40,38 +40,33 @@
 ****************************************************************************/
 
 import QtQuick 2.7
+import QtQuick.Window 2.2
 import QmlPresentation 1.0
 
-OpacityTransitionPresentation
-{
-    anchors.fill: parent
-    Slide {
-        title: "Custom Transitions, 1"
-        centeredText: "The Presentation {} Element has a 'switchSlides(from, to, forward)' function which will be called whenever a transition between slides should take place."
+Window {
+    id: win
+    visible: true
+    width: 1280
+    height: 960
+    property var oldVisibility
+
+    Component.onCompleted: {
+        oldVisibility = visibility;
     }
 
-    Slide {
-        title: "Custom Transitions, 2"
-        centeredText:
-            "Re-implement this function and add your own transition for the slides. "
+    Shortcut {
+        sequence: "Ctrl+F11"
+        onActivated: {
+            if (win.visibility == Window.FullScreen) {
+                win.visibility = win.oldVisibility
+            } else {
+                win.oldVisibility = win.visibility
+                win.visibility = Window.FullScreen
+            }
+        }
     }
 
-    Slide {
-        title: "Custom Transitions, 3"
-        content: [
-            "'from' slide",
-            " opacity fades out",
-            " scale increases slightly",
-            "'to' slide",
-            " opacity fades in",
-            " scale increases from small to normal",
-            "All with a fairly simple ParallelAnimation {}"
-        ]
+    SlideDeck {
+        id: slideDeck
     }
-
-    Slide {
-        title: "Custom Transition, 4"
-        centeredText: "The transition works whichever way you go...\nLets go back to the beginning..."
-    }
-
 }
